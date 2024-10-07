@@ -3,4 +3,4 @@ reportlab
 pandas
 pygithub==1.55
 st-gsheets-connection
-st_aggrid
+streamlit-aggrid
