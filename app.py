@@ -303,7 +303,7 @@ if tipo_venta == 'Venta por unidad':
    
         for index, row in cotiza_df.iterrows():
     # Asegúrate de que estás accediendo a los valores correctamente
-            data.append([row["Articulo"], row["PrecioKg/USD"], row["Cantidad"],  row["Total"]])
+            data.append([row["Articulo"], row["Precio/USD"], row["Cantidad"],  row["Total"]])
 
             
 
@@ -569,7 +569,7 @@ elif tipo_venta == 'Venta por metro':
    
         for index, row in cotiza_df.iterrows():
     # Asegúrate de que estás accediendo a los valores correctamente
-            data.append([row["Articulo"], row["PrecioKg/USD"], row["Kg_vender"],  row["Total"]])
+            data.append([row["Articulo"], row["Precio/USD"], row["Metros_vender"],  row["Total"]])
 
             
 
