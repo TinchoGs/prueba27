@@ -1,6 +1,0 @@
-streamlit
-reportlab
-pandas
-pygithub==1.55
-st-gsheets-connection
-streamlit-aggrid
