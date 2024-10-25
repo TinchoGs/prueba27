@@ -18,7 +18,7 @@ st.set_page_config(layout="wide")
 # Creamos un objeto de sesión
 session_state = st.session_state
 
-st.markdown("<h1 style='text-align: center;margin-top: -7px; margin-left: -940px'>Productos Almar</h1>", unsafe_allow_html=True)
+st.title("Productos Almar")
 
 # Lee el archivo CSV
 conn = st.connection("gsheets", type=GSheetsConnection)
@@ -281,24 +281,152 @@ if st.button("Eliminar"):
         # Cálculo del total a pagar
 if tipo_venta == 'Venta por unidad':
     if st.button("Calcular"):
-        cotiza_df = pd.DataFrame(carrito_lindo.data[["Articulo", "Precio/USD", "Cantidad"]])
-        cotiza_df["Total"] = cotiza_df.apply(lambda row: float(row["Precio/USD"]) * float(row["Cantidad"]), axis=1)
-        st.write(cotiza_df)
-        total = (cotiza_df['Total']).sum()
-        st.write(f"Total a pagar: ${total:.2f}")
-        if st.button('Cotizar'):
-            st.write('hagan la magia (guevo dibu guevo)')
+        calculo_carrito_lindo = pd.DataFrame(carrito_lindo['data'])
+        if 'Cantidad' not in calculo_carrito_lindo.columns or calculo_carrito_lindo['Cantidad'].isna().any():
+            st.warning('Llene los campos de cantidad.')
+        else:
+            cotiza_df = pd.DataFrame(carrito_lindo.data[["Articulo", "Precio/USD", "Cantidad"]])
+            cotiza_df["Total"] = cotiza_df.apply(lambda row: float(row["Precio/USD"]) * float(row["Cantidad"]), axis=1)
+            st.write(cotiza_df)
+            total = (cotiza_df['Total']).sum()
+            st.write(f"Total a pagar: ${total:.2f}")
+            pagesize = letter
+            leftMargin = 18  # 1 pulgada   
+            rightMargin = 18  # 1 pulgada
+            topMargin = 180 # 1 pulgada
+            bottomMargin = 0  # 1 pulgada           
+            
+        data = [
+                ['Articulo', 'Precio/USD', 'Cantidad', 'Total']
+            ]
+
+   
+        for index, row in cotiza_df.iterrows():
+    # Asegúrate de que estás accediendo a los valores correctamente
+            data.append([row["Articulo"], row["PrecioKg/USD"], row["Cantidad"],  row["Total"]])
+
+            
+
+
+
+
+        tablo = Table(data)
+
+    # Estilo de la tabla
+        style = TableStyle([
+                ('BACKGROUND', (0, 0), (-1, 0), colors.black),  # Fila de encabezado
+                ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
+                ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+                ('BACKGROUND', (0, 1), (-1, -1), colors.white),
+                ('GRID', (0, 0), (-1, -1), 1, colors.black),
+                ])
+        tablo.setStyle(style)
+
+        pdf_buffer = BytesIO()
+
+        doc = SimpleDocTemplate(pdf_buffer, pagesize=pagesize, leftMargin=leftMargin, rightMargin=rightMargin,
+                                topMargin=topMargin, bottomMargin=bottomMargin)
+
+# Crea un estilo de texto
+        styles = getSampleStyleSheet()
+        style = styles["BodyText"]
+
+# Crea un párrafo de texto
+
+# Función para dibujar en el PDF
+        def draw(c, doc):
+    # Dibuja la imagen en la posición deseada
+                
+
+    # Dibuja una línea
+                
+            width, height = letter
+
+    # Dibujar un borde
+            c.setStrokeColor(colors.black)
+            c.rect(0.5 * inch, 0.5 * inch, width - 1 * inch, height - 1 * inch)
+
+    # Logo de la empresa
+            #c.drawImage("img/logo_Almar.png", 0.7 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
+
+    # Título y pretexto
+            #c.setFont("HandelGothic BT", 16)
+            c.drawString(1.8 * inch, height - 1 * inch, "Ricardo Almar E Hijos S.A")
+
+            #c.setFont("HandelGothic BT", 12)
+            c.drawString(1.8 * inch, height - 1.2 * inch, "Telas - Envases - Estructuras Flexibles")
+
+            #c.drawImage("img/logo_Almar.png", 1.7 * inch, height - 7 * inch, width=3 * inch, height=3 * inch)
+
+
+
+            cliente_data = [
+                ["CLIENTE","CUENTA"],
+                ["XXXXXXX","XXXXXX"],
+            ]
+
+            col_widths = [439.8, 100]
+    
+            table = Table(cliente_data, colWidths=col_widths)
+            table.setStyle(TableStyle([
+                ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+                ('ALIGN', (4, -6), (-1, -1), 'CENTER'),
+                ('CELLPADDING', (0, 0), (-1, -1), 10),
+                ('FONTNAME', (0, 0), (0, 0), 'Helvetica-Bold'),  
+                ('BACKGROUND', (0, 0),(-1, 0), colors.black),
+                ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
+                ('FONTNAME', (0, 6), (0, 6), 'Helvetica-Bold'),
+                ('FONTNAME', (1, 6), (1, 6), 'Helvetica-Bold'),
+                ('GRID', (0, 0), (-1, -1), 0, colors.black),
+                ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        
+            ]))
+    
+    # Dibujar la tabla de información de contacto
+            table.wrapOn(c, width, height)
+            table.drawOn(c, 0.5 * inch, height - 2.2 * inch) # Coordenadas y tamaño del rectángulo
+        elementos = [tablo]  # Solo el párrafo, la imagen se dibuja en la función draw
+        doc.build(elementos, onFirstPage=draw, onLaterPages=draw)
+        pdf_buffer.seek(0)
+        
+        st.download_button(
+            label="Descargar Cotización",
+            data=pdf_buffer,
+            file_name="Cotizacion.pdf",
+            mime="application/pdf"
+        )
+
+
+
+
+
+
+
+
+
+        
+            
+          
 elif tipo_venta == 'Venta por peso':
     if st.button("Calcular"):
-
-        cotiza_df = pd.DataFrame(carrito_lindo.data[["Articulo", "PrecioKg/USD", "Kg_vender"]])
-        cotiza_df["Total"] = cotiza_df.apply(lambda row: float(row["PrecioKg/USD"]) * float(row["Kg_vender"]), axis=1)
-        st.write(cotiza_df)
-        pagesize = letter
-        leftMargin = 18  # 1 pulgada   
-        rightMargin = 18  # 1 pulgada
-        topMargin = 180 # 1 pulgada
-        bottomMargin = 0  # 1 pulgada           
+        calculo_carrito_lindo = pd.DataFrame(carrito_lindo['data'])
+        if 'Kg_vender' not in calculo_carrito_lindo.columns or calculo_carrito_lindo['Kg_vender'].isna().any():
+            st.warning('Llene los campos de Kg_vender.')
+        else:
+            cotiza_df = pd.DataFrame(carrito_lindo.data[["Articulo", "PrecioKg/USD", "Kg_vender"]])
+            cotiza_df["Total"] = cotiza_df.apply(lambda row: float(row["PrecioKg/USD"]) * float(row["Kg_vender"]), axis=1)
+            st.write(cotiza_df)
+            total = (cotiza_df['Total']).sum()
+            st.write(f"Total a pagar: ${total:.2f}")
+            pagesize = letter
+            leftMargin = 18  # 1 pulgada   
+            rightMargin = 18  # 1 pulgada
+            topMargin = 180 # 1 pulgada
+            bottomMargin = 0  # 1 pulgada           
             
         data = [
                 ['Articulo', 'PrecioKg/USD', 'Kg_vender', 'Total']
@@ -403,19 +531,149 @@ elif tipo_venta == 'Venta por peso':
             file_name="Cotizacion.pdf",
             mime="application/pdf"
         )
-        
-        total = (cotiza_df['Total']).sum()
-        st.write(f"Total a pagar: ${total:.2f}")
+
+
+
+
+
+
+
+
+
+
+
+
+          
 
 elif tipo_venta == 'Venta por metro':
     if st.button("Calcular"):
-        cotiza_df = pd.DataFrame(carrito_lindo.data[["Articulo", "Precio/USD", "Metros_vender"]])
-        cotiza_df["Total"] = cotiza_df.apply(lambda row: float(row["Precio/USD"]) * float(row["Metros_vender"]), axis=1)
-        st.write(cotiza_df)
-        total = (cotiza_df['Total']).sum()
-        st.write(f"Total a pagar: ${total:.2f}")
-        if st.button('Cotizar'):
-            st.write('hagan la magia (guevo dibu guevo)')
+        calculo_carrito_lindo = pd.DataFrame(carrito_lindo['data'])
+        if 'Metros_vender' not in calculo_carrito_lindo.columns or calculo_carrito_lindo['Metros_vender'].isna().any():
+            st.warning('Llene los campos de Metros_vender.')
+        else:
+            cotiza_df = pd.DataFrame(carrito_lindo.data[["Articulo", "Precio/USD", "Metros_vender"]])
+            cotiza_df["Total"] = cotiza_df.apply(lambda row: float(row["Precio/USD"]) * float(row["Metros_vender"]), axis=1)
+            st.write(cotiza_df)
+            total = (cotiza_df['Total']).sum()
+            st.write(f"Total a pagar: ${total:.2f}")
+            pagesize = letter
+            leftMargin = 18  # 1 pulgada   
+            rightMargin = 18  # 1 pulgada
+            topMargin = 180 # 1 pulgada
+            bottomMargin = 0  # 1 pulgada           
+            
+        data = [
+                ['Articulo', 'Precio/USD', 'Metros_vender', 'Total']
+            ]
+
+   
+        for index, row in cotiza_df.iterrows():
+    # Asegúrate de que estás accediendo a los valores correctamente
+            data.append([row["Articulo"], row["PrecioKg/USD"], row["Kg_vender"],  row["Total"]])
+
+            
+
+
+
+
+        tablo = Table(data)
+
+    # Estilo de la tabla
+        style = TableStyle([
+                ('BACKGROUND', (0, 0), (-1, 0), colors.black),  # Fila de encabezado
+                ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
+                ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+                ('BACKGROUND', (0, 1), (-1, -1), colors.white),
+                ('GRID', (0, 0), (-1, -1), 1, colors.black),
+                ])
+        tablo.setStyle(style)
+
+        pdf_buffer = BytesIO()
+
+        doc = SimpleDocTemplate(pdf_buffer, pagesize=pagesize, leftMargin=leftMargin, rightMargin=rightMargin,
+                                topMargin=topMargin, bottomMargin=bottomMargin)
+
+# Crea un estilo de texto
+        styles = getSampleStyleSheet()
+        style = styles["BodyText"]
+
+# Crea un párrafo de texto
+
+# Función para dibujar en el PDF
+        def draw(c, doc):
+    # Dibuja la imagen en la posición deseada
+                
+
+    # Dibuja una línea
+                
+            width, height = letter
+
+    # Dibujar un borde
+            c.setStrokeColor(colors.black)
+            c.rect(0.5 * inch, 0.5 * inch, width - 1 * inch, height - 1 * inch)
+
+    # Logo de la empresa
+            #c.drawImage("img/logo_Almar.png", 0.7 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
+
+    # Título y pretexto
+            #c.setFont("HandelGothic BT", 16)
+            c.drawString(1.8 * inch, height - 1 * inch, "Ricardo Almar E Hijos S.A")
+
+            #c.setFont("HandelGothic BT", 12)
+            c.drawString(1.8 * inch, height - 1.2 * inch, "Telas - Envases - Estructuras Flexibles")
+
+            #c.drawImage("img/logo_Almar.png", 1.7 * inch, height - 7 * inch, width=3 * inch, height=3 * inch)
+
+
+
+            cliente_data = [
+                ["CLIENTE","CUENTA"],
+                ["XXXXXXX","XXXXXX"],
+            ]
+
+            col_widths = [439.8, 100]
+    
+            table = Table(cliente_data, colWidths=col_widths)
+            table.setStyle(TableStyle([
+                ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+                ('ALIGN', (4, -6), (-1, -1), 'CENTER'),
+                ('CELLPADDING', (0, 0), (-1, -1), 10),
+                ('FONTNAME', (0, 0), (0, 0), 'Helvetica-Bold'),  
+                ('BACKGROUND', (0, 0),(-1, 0), colors.black),
+                ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
+                ('FONTNAME', (0, 6), (0, 6), 'Helvetica-Bold'),
+                ('FONTNAME', (1, 6), (1, 6), 'Helvetica-Bold'),
+                ('GRID', (0, 0), (-1, -1), 0, colors.black),
+                ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        
+            ]))
+    
+    # Dibujar la tabla de información de contacto
+            table.wrapOn(c, width, height)
+            table.drawOn(c, 0.5 * inch, height - 2.2 * inch) # Coordenadas y tamaño del rectángulo
+        elementos = [tablo]  # Solo el párrafo, la imagen se dibuja en la función draw
+        doc.build(elementos, onFirstPage=draw, onLaterPages=draw)
+        pdf_buffer.seek(0)
+        
+        st.download_button(
+            label="Descargar Cotización",
+            data=pdf_buffer,
+            file_name="Cotizacion.pdf",
+            mime="application/pdf"
+        )
+
+     
+
+
+
+
+
+
 else:
     st.write("No hay artículos en el carrito.")
+
 
