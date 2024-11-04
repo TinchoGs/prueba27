@@ -28,7 +28,7 @@ df_clientes = conn.read(worksheet='Clientes')
 df_dolar = conn.read(worksheet='DolarBNA_hoy',header=None)
 dola_hoy= df_dolar.iloc[0, 1]
 fecha = df_dolar.iloc[0, 0].replace("/", "_")
-st.write(fecha)
+
 # Caja de búsqueda
 nombres_clientes = df_clientes['Cliente'].dropna().unique().tolist()
 
