@@ -41,7 +41,6 @@ categoria_producto = df.pop('Categoria Producto')
 df.insert(1, 'Categoria Producto', categoria_producto)
 
 Vendedor = st.experimental_user ["email"]
-st.write(Vendedor)
 st.session_state.reset_filtros = False
 
 col1, col2, col3, col4, col5, col6,col7,col8 = st.columns(8)
