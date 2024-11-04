@@ -26,7 +26,7 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 df = conn.read(worksheet='Productos')
 df_clientes = conn.read(worksheet='Clientes')
 df_dolar = conn.read(worksheet='DolarBNA_hoy',header=None)
-dola_hoy= df_dolar.iloc[0, 1]
+dolar_hoy= df_dolar.iloc[0, 1]
 fecha = df_dolar.iloc[0, 0].replace("/", "_")
 
 # Caja de búsqueda
@@ -277,7 +277,7 @@ if not st.session_state.carrito.empty:
             carrito_go.configure_column("Precio/USD", editable=True)
             carrito_go.configure_columns(['Codigo','Articulo', 'Cantidad', 'Precio/USD'], columns_to_display='visible')
         else:
-            st.session_state.carrito['Precio/Pesos'] = st.session_state.carrito['Precio/USD']*dola_hoy
+            st.session_state.carrito['Precio/Pesos'] = st.session_state.carrito['Precio/USD']*dolar_hoy
             carrito_df = pd.DataFrame(st.session_state.carrito[['Codigo','Articulo', 'Precio/Pesos']])
             carrito_df['Cantidad'] = 1  # Inicializa la columna "Cantidad" con un valor predeterminado de 1
             carrito_go = GridOptionsBuilder.from_dataframe(carrito_df)
@@ -294,7 +294,7 @@ if not st.session_state.carrito.empty:
             carrito_go.configure_column("PrecioKg/USD", editable=True)
             carrito_go.configure_columns(['Articulo', 'Kg_vender', 'PrecioKg/USD'], columns_to_display='visible')
         else:
-            st.session_state.carrito['PrecioKg/Pesos'] = st.session_state.carrito['PrecioKg/USD']*dola_hoy
+            st.session_state.carrito['PrecioKg/Pesos'] = st.session_state.carrito['PrecioKg/USD']*dolar_hoy
             carrito_df = pd.DataFrame(st.session_state.carrito[['Codigo','Articulo', 'PrecioKg/Pesos']])
             carrito_df['Kg_vender'] = 1  
             carrito_go = GridOptionsBuilder.from_dataframe(carrito_df)
@@ -311,7 +311,7 @@ if not st.session_state.carrito.empty:
             carrito_go.configure_column("Precio/USD", editable=True)
             carrito_go.configure_columns(['Codigo','Articulo', 'Metros_vender', 'Precio/USD'], columns_to_display='visible')
         else:
-            st.session_state.carrito['Precio/Pesos'] = st.session_state.carrito['Precio/USD']*dola_hoy
+            st.session_state.carrito['Precio/Pesos'] = st.session_state.carrito['Precio/USD']*dolar_hoy
             carrito_df = pd.DataFrame(st.session_state.carrito[['Codigo','Articulo', 'Precio/Pesos']])
             carrito_df['Metros_vender'] = 1  # Inicializa la columna "Cantidad" con un valor predeterminado de 1
             carrito_go = GridOptionsBuilder.from_dataframe(carrito_df)
@@ -370,7 +370,7 @@ if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
                     cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/USD"]) * float(row["Cantidad"]), 2), axis=1)
                     st.write(cotiza_df)
                     total = (cotiza_df['SubTotal']).sum()
-                    st.write(f"SubTotal a pagar: ${total:.2f}")
+                    st.write(f"Total Cotizacion: ${total:.2f}" + dolar_hoy)
 
 
 
@@ -444,7 +444,7 @@ if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
 
             # Dibujar un borde
                     BuenVendedor = ("Vendedor: " + Vendedor)
-                    BuenDolar = ("DolarVentaBNA : " + str(dola_hoy))
+                    BuenDolar = ("DolarVentaBNA : " + str(dolar_hoy))
                     c.drawString(72, 605, BuenDolar)
                     
                     c.drawString(72, 650, BuenVendedor)
@@ -498,7 +498,7 @@ elif tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Peso':
                 cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/Pesos"]) * float(row["Cantidad"]), 2), axis=1)
                 st.write(cotiza_df)
                 total = (cotiza_df['SubTotal']).sum()
-                st.write(f"SubTotal a pagar: ${total:.2f}")
+                st.write(f"Total cotizacion: ${total:.2f}" + dolar_hoy)
 
 
 
@@ -573,7 +573,7 @@ elif tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Peso':
         # Dibujar un borde
                 
                 BuenVendedor = ("Vendedor: " + Vendedor)
-                BuenDolar = ("DolarVentaBNA : " + str(dola_hoy))
+                BuenDolar = ("DolarVentaBNA : " + str(dolar_hoy))
                 c.drawString(72, 605, BuenDolar)
                     
                 c.drawString(72, 650, BuenVendedor)
@@ -627,7 +627,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
                 cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["PrecioKg/USD"]) * float(row["Kg_vender"]), 2), axis=1)
                 st.write(cotiza_df)
                 total = (cotiza_df['SubTotal']).sum()
-                st.write(f"SubTotal a pagar: ${total:.2f}")
+                st.write(f"Total cotizacion: ${total:.2f}")
 
 
 
@@ -702,7 +702,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
         # Dibujar un borde
                 
                 BuenVendedor = ("Vendedor: " + Vendedor)
-                BuenDolar = ("DolarVentaBNA : " + str(dola_hoy))
+                BuenDolar = ("DolarVentaBNA : " + str(dolar_hoy))
                 c.drawString(72, 605, BuenDolar)
                     
                 c.drawString(72, 650, BuenVendedor)
@@ -759,7 +759,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
                 cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["PrecioKg/Pesos"]) * float(row["Kg_vender"]), 2), axis=1)
                 st.write(cotiza_df)
                 total = (cotiza_df['SubTotal']).sum()
-                st.write(f"SubTotal a pagar: ${total:.2f}")
+                st.write(f"Total cotizacion: ${total:.2f}"  + dolar_hoy)
 
 
 
@@ -834,7 +834,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
         # Dibujar un borde
                 
                 BuenVendedor = ("Vendedor: " + Vendedor)
-                BuenDolar = ("DolarVentaBNA : " + str(dola_hoy))
+                BuenDolar = ("DolarVentaBNA : " + str(dolar_hoy))
                 c.drawString(72, 605, BuenDolar)
                     
                 c.drawString(72, 650, BuenVendedor)
@@ -887,7 +887,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
                 cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/USD"]) * float(row["Metros_vender"]), 2), axis=1)
                 st.write(cotiza_df)
                 total = (cotiza_df['SubTotal']).sum()
-                st.write(f"SubTotal a pagar: ${total:.2f}")
+                st.write(f"Total cotizacion ${total:.2f}")
 
 
 
@@ -962,7 +962,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
         # Dibujar un borde
                 
                 BuenVendedor = ("Vendedor: " + Vendedor)
-                BuenDolar = ("DolarVentaBNA : " + str(dola_hoy))
+                BuenDolar = ("DolarVentaBNA : " + str(dolar_hoy))
                 c.drawString(72, 605, BuenDolar)
                     
                 c.drawString(72, 650, BuenVendedor)
@@ -1015,7 +1015,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
                 cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/Pesos"]) * float(row["Metros_vender"]), 2), axis=1)
                 st.write(cotiza_df)
                 total = (cotiza_df['SubTotal']).sum()
-                st.write(f"SubTotal a pagar: ${total:.2f}")
+                st.write(f"Total cotizacion: ${total:.2f}" + dolar_hoy)
 
 
 
@@ -1090,7 +1090,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
         # Dibujar un borde
                 
                 BuenVendedor = ("Vendedor: " + Vendedor)
-                BuenDolar = ("DolarVentaBNA : " + str(dola_hoy))
+                BuenDolar = ("DolarVentaBNA : " + str(dolar_hoy))
                 c.drawString(72, 605, BuenDolar)
                     
                 c.drawString(72, 650, BuenVendedor)
