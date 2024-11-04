@@ -237,7 +237,7 @@ with col3:
 # Filtrar el DataFrame según la selección
 if nombres_seleccionados:
     poolresultado = df_clientes[df_clientes['Cliente'] == nombres_seleccionados]
-    cod_cliente = df_clientes[df_clientes['CodCliente'] == nombres_seleccionados]
+    cod_cliente = df_clientes[df_clientes['CodCliente']]
     
     if poolresultado.empty:
         st.write("No se encontraron clientes con el nombre seleccionado.")
