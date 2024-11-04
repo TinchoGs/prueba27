@@ -237,12 +237,13 @@ with col3:
 # Filtrar el DataFrame según la selección
 if nombres_seleccionados:
     poolresultado = df_clientes[df_clientes['Cliente'] == nombres_seleccionados]
+    cod_cliente = df_clientes[df_clientes['CodCliente'] == nombres_seleccionados]
     
     if poolresultado.empty:
         st.write("No se encontraron clientes con el nombre seleccionado.")
 else:
     st.write("Por favor, seleccione un cliente.")
-
+st.write(cod_cliente)
 # Almacenar los artículos seleccionados en la variable de sesión
 articulo_seleccionado_df = grid_table['selected_rows']
 articulo_seleccionado_df = pd.DataFrame(articulo_seleccionado_df)
