@@ -413,8 +413,8 @@ if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
 
 
 
-                cliente_data = str([poolresultado.iloc[0,1]]).replace("[", "").replace("]", "").replace("'", "")  # Agrega cada cliente como una lista
-                cliente_codigo = str([poolresultado.iloc[0,0]])
+                cliente_data = str([poolresultado.iloc[0,1]])  # Agrega cada cliente como una lista
+                cliente_codigo = str([poolresultado.iloc[0,0]]).replace("[np.int64(", "").replace(")]", "")
 
                 # Luego, utiliza cliente_data para crear la tabla
             
