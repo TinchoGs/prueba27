@@ -40,8 +40,8 @@ categoria_producto = df.pop('Categoria Producto')
 # Inserta la columna "categoria_producto" en la posición 2
 df.insert(1, 'Categoria Producto', categoria_producto)
 
-#Vendedor = st.experimental_user.email
-#st.write(Vendedor)
+Vendedor = st.experimental_user.email
+st.write(Vendedor)
 st.session_state.reset_filtros = False
 
 col1, col2, col3, col4, col5, col6,col7,col8 = st.columns(8)
@@ -445,7 +445,7 @@ if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
 
             # Dibujar un borde
                     
-                    #c.drawString(72, 650, Vendedor)
+                    c.drawString(72, 650, Vendedor)
                     BuenCliente = ("Cliente: " + cliente_data)
                     c.drawString(72, 665, BuenCliente)
                     c.setStrokeColor(colors.black)
@@ -481,7 +481,7 @@ if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
                 st.download_button(
                     label="Descargar Cotizacion",
                     data=pdf_buffer,
-                    file_name="Cotizacion " + "Vendedor" + " " + fecha + ".pdf",
+                    file_name="Cotizacion " + Vendedor + " " + fecha + ".pdf",
                     mime="application/pdf"
                 )
            
@@ -569,7 +569,7 @@ elif tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Peso':
 
         # Dibujar un borde
                 
-                #c.drawString(72, 650, Vendedor)
+                c.drawString(72, 650, Vendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
                 c.drawString(72, 665, BuenCliente)
                 c.setStrokeColor(colors.black)
@@ -605,7 +605,7 @@ elif tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Peso':
             st.download_button(
                 label="Descargar Cotizacion",
                 data=pdf_buffer,
-                file_name="Cotizacion " + "Vendedor" + " " + fecha + ".pdf",
+                file_name="Cotizacion " + Vendedor + " " + fecha + ".pdf",
                 mime="application/pdf"
             )
 elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
@@ -692,7 +692,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
 
         # Dibujar un borde
                 
-                #c.drawString(72, 650, Vendedor)
+                c.drawString(72, 650, Vendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
                 c.drawString(72, 665, BuenCliente)
                 c.setStrokeColor(colors.black)
@@ -728,7 +728,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
             st.download_button(
                 label="Descargar Cotizacion",
                 data=pdf_buffer,
-                file_name="Cotizacion " + "Vendedor" + " " + fecha + ".pdf",
+                file_name="Cotizacion " + Vendedor + " " + fecha + ".pdf",
                 mime="application/pdf"
             )
 elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
@@ -815,7 +815,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
 
         # Dibujar un borde
                 
-                #c.drawString(72, 650, Vendedor)
+                c.drawString(72, 650, Vendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
                 c.drawString(72, 665, BuenCliente)
                 c.setStrokeColor(colors.black)
@@ -851,7 +851,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
             st.download_button(
                 label="Descargar Cotizacion",
                 data=pdf_buffer,
-                file_name="Cotizacion " + "Vendedor" + " " + fecha + ".pdf",
+                file_name="Cotizacion " + Vendedor + " " + fecha + ".pdf",
                 mime="application/pdf"
             )
 elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
@@ -938,7 +938,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
 
         # Dibujar un borde
                 
-                #c.drawString(72, 650, Vendedor)
+                c.drawString(72, 650, Vendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
                 c.drawString(72, 665, BuenCliente)
                 c.setStrokeColor(colors.black)
@@ -974,7 +974,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
             st.download_button(
                 label="Descargar Cotizacion",
                 data=pdf_buffer,
-                file_name="Cotizacion " + "Vendedor" + " " + fecha + ".pdf",
+                file_name="Cotizacion " + Vendedor + " " + fecha + ".pdf",
                 mime="application/pdf"
             )
 elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
@@ -1061,7 +1061,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
 
         # Dibujar un borde
                 
-                #c.drawString(72, 650, Vendedor)
+                c.drawString(72, 650, Vendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
                 c.drawString(72, 665, BuenCliente)
                 c.setStrokeColor(colors.black)
@@ -1097,7 +1097,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
             st.download_button(
                 label="Descargar Cotizacion",
                 data=pdf_buffer,
-                file_name="Cotizacion " + "Vendedor" + " " + fecha + ".pdf",
+                file_name="Cotizacion " + Vendedor + " " + fecha + ".pdf",
                 mime="application/pdf"
             )
 
