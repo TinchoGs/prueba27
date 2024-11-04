@@ -444,6 +444,8 @@ if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
 
             # Dibujar un borde
                     BuenVendedor = ("Vendedor: " + Vendedor)
+                    BuenDolar = ("DolarVentaBNA : " + str(dola_hoy))
+                    c.drawString(72, 605, BuenDolar)
                     
                     c.drawString(72, 650, BuenVendedor)
                     BuenCliente = ("Cliente: " + cliente_data)
@@ -571,12 +573,15 @@ elif tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Peso':
         # Dibujar un borde
                 
                 BuenVendedor = ("Vendedor: " + Vendedor)
+                BuenDolar = ("DolarVentaBNA : " + str(dola_hoy))
+                c.drawString(72, 605, BuenDolar)
                     
                 c.drawString(72, 650, BuenVendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
                 c.drawString(72, 665, BuenCliente)
                 c.setStrokeColor(colors.black)
                 c.rect(0.5 * inch, 0.5 * inch, width - 1 * inch, height - 1 * inch)
+
 
                     
                 c.drawString(72, 635, "Cotizacion valida por: " + tiempo_cotizacion)
@@ -697,6 +702,8 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
         # Dibujar un borde
                 
                 BuenVendedor = ("Vendedor: " + Vendedor)
+                BuenDolar = ("DolarVentaBNA : " + str(dola_hoy))
+                c.drawString(72, 605, BuenDolar)
                     
                 c.drawString(72, 650, BuenVendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
@@ -710,6 +717,10 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
 
         # Logo de la empresa
                 c.drawImage(".images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
+
+
+
+#
                 
         # Título y pretexto
                 
@@ -823,6 +834,8 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
         # Dibujar un borde
                 
                 BuenVendedor = ("Vendedor: " + Vendedor)
+                BuenDolar = ("DolarVentaBNA : " + str(dola_hoy))
+                c.drawString(72, 605, BuenDolar)
                     
                 c.drawString(72, 650, BuenVendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
@@ -949,6 +962,8 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
         # Dibujar un borde
                 
                 BuenVendedor = ("Vendedor: " + Vendedor)
+                BuenDolar = ("DolarVentaBNA : " + str(dola_hoy))
+                c.drawString(72, 605, BuenDolar)
                     
                 c.drawString(72, 650, BuenVendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
@@ -1075,6 +1090,8 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
         # Dibujar un borde
                 
                 BuenVendedor = ("Vendedor: " + Vendedor)
+                BuenDolar = ("DolarVentaBNA : " + str(dola_hoy))
+                c.drawString(72, 605, BuenDolar)
                     
                 c.drawString(72, 650, BuenVendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
