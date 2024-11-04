@@ -539,7 +539,8 @@ elif tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Peso':
 
 
 
-            cliente_data = str([poolresultado.iloc[0,1]]).replace("[", "").replace("]", "").replace("'", "")  # Agrega cada cliente como una lista
+            cliente_data = str([poolresultado.iloc[0,1]]).replace('["', "").replace('"]', "").replace("['", "").replace("']", "")  # Agrega cada cliente como una lista
+            cliente_codigo = str([poolresultado.iloc[0,0]]).replace("[np.int64(", "").replace(")]", "")
 
             # Luego, utiliza cliente_data para crear la tabla
         
@@ -607,7 +608,7 @@ elif tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Peso':
             st.download_button(
                 label="Descargar Cotizacion",
                 data=pdf_buffer,
-                file_name="Cotizacion " + Vendedor + " " + fecha + ".pdf",
+                file_name="Cotizacion " + cliente_codigo + " " + fecha + ".pdf",
                 mime="application/pdf"
             )
 elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
@@ -664,7 +665,8 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
 
 
 
-            cliente_data = str([poolresultado.iloc[0,1]]).replace("[", "").replace("]", "").replace("'", "")  # Agrega cada cliente como una lista
+            cliente_data = str([poolresultado.iloc[0,1]]).replace('["', "").replace('"]', "").replace("['", "").replace("']", "")  # Agrega cada cliente como una lista
+            cliente_codigo = str([poolresultado.iloc[0,0]]).replace("[np.int64(", "").replace(")]", "")
 
             # Luego, utiliza cliente_data para crear la tabla
         
@@ -732,7 +734,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
             st.download_button(
                 label="Descargar Cotizacion",
                 data=pdf_buffer,
-                file_name="Cotizacion " + Vendedor + " " + fecha + ".pdf",
+                file_name="Cotizacion " + cliente_codigo + " " + fecha + ".pdf",
                 mime="application/pdf"
             )
 elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
@@ -789,7 +791,8 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
 
 
 
-            cliente_data = str([poolresultado.iloc[0,1]]).replace("[", "").replace("]", "").replace("'", "")  # Agrega cada cliente como una lista
+            cliente_data = str([poolresultado.iloc[0,1]]).replace('["', "").replace('"]', "").replace("['", "").replace("']", "")  # Agrega cada cliente como una lista
+            cliente_codigo = str([poolresultado.iloc[0,0]]).replace("[np.int64(", "").replace(")]", "")
 
             # Luego, utiliza cliente_data para crear la tabla
         
@@ -857,7 +860,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
             st.download_button(
                 label="Descargar Cotizacion",
                 data=pdf_buffer,
-                file_name="Cotizacion " + Vendedor + " " + fecha + ".pdf",
+                file_name="Cotizacion " + cliente_codigo + " " + fecha + ".pdf",
                 mime="application/pdf"
             )
 elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
@@ -914,7 +917,8 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
 
 
 
-            cliente_data = str([poolresultado.iloc[0,1]]).replace("[", "").replace("]", "").replace("'", "")  # Agrega cada cliente como una lista
+            cliente_data = str([poolresultado.iloc[0,1]]).replace('["', "").replace('"]', "").replace("['", "").replace("']", "")  # Agrega cada cliente como una lista
+            cliente_codigo = str([poolresultado.iloc[0,0]]).replace("[np.int64(", "").replace(")]", "")
 
             # Luego, utiliza cliente_data para crear la tabla
         
@@ -982,7 +986,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
             st.download_button(
                 label="Descargar Cotizacion",
                 data=pdf_buffer,
-                file_name="Cotizacion " + Vendedor + " " + fecha + ".pdf",
+                file_name="Cotizacion " + cliente_codigo + " " + fecha + ".pdf",
                 mime="application/pdf"
             )
 elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
@@ -1039,7 +1043,8 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
 
 
 
-            cliente_data = str([poolresultado.iloc[0,1]]).replace("[", "").replace("]", "").replace("'", "")  # Agrega cada cliente como una lista
+            cliente_data = str([poolresultado.iloc[0,1]]).replace('["', "").replace('"]', "").replace("['", "").replace("']", "")  # Agrega cada cliente como una lista
+            cliente_codigo = str([poolresultado.iloc[0,0]]).replace("[np.int64(", "").replace(")]", "")
 
             # Luego, utiliza cliente_data para crear la tabla
         
@@ -1107,7 +1112,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
             st.download_button(
                 label="Descargar Cotizacion",
                 data=pdf_buffer,
-                file_name="Cotizacion " + Vendedor + " " + fecha + ".pdf",
+                file_name="Cotizacion " + cliente_codigo + " " + fecha + ".pdf",
                 mime="application/pdf"
             )
 
