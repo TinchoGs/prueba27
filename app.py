@@ -242,7 +242,6 @@ if nombres_seleccionados:
         st.write("No se encontraron clientes con el nombre seleccionado.")
 else:
     st.write("Por favor, seleccione un cliente.")
-st.write(poolresultado)
 # Almacenar los artículos seleccionados en la variable de sesión
 articulo_seleccionado_df = grid_table['selected_rows']
 articulo_seleccionado_df = pd.DataFrame(articulo_seleccionado_df)
@@ -415,6 +414,7 @@ if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
 
 
                 cliente_data = str([poolresultado.iloc[0,1]]).replace("[", "").replace("]", "").replace("'", "")  # Agrega cada cliente como una lista
+                cliente_codigo = str([poolresultado.iloc[0,0]]).replace("[", "").replace("]", "").replace("'", "")
 
                 # Luego, utiliza cliente_data para crear la tabla
             
@@ -481,7 +481,7 @@ if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
                 st.download_button(
                     label="Descargar Cotizacion",
                     data=pdf_buffer,
-                    file_name="Cotizacion " + Vendedor + " " + fecha + ".pdf",
+                    file_name="Cotizacion " + cliente_codigo + " " + fecha + ".pdf",
                     mime="application/pdf"
                 )
            
