@@ -443,8 +443,9 @@ if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
                     width, height = letter
 
             # Dibujar un borde
+                    BuenVendedor = ("Vendedor: " + Vendedor)
                     
-                    c.drawString(72, 650, Vendedor)
+                    c.drawString(72, 650, BuenVendedor)
                     BuenCliente = ("Cliente: " + cliente_data)
                     c.drawString(72, 665, BuenCliente)
                     c.setStrokeColor(colors.black)
@@ -568,7 +569,9 @@ elif tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Peso':
 
         # Dibujar un borde
                 
-                c.drawString(72, 650, Vendedor)
+                BuenVendedor = ("Vendedor: " + Vendedor)
+                    
+                c.drawString(72, 650, BuenVendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
                 c.drawString(72, 665, BuenCliente)
                 c.setStrokeColor(colors.black)
@@ -691,7 +694,9 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
 
         # Dibujar un borde
                 
-                c.drawString(72, 650, Vendedor)
+                BuenVendedor = ("Vendedor: " + Vendedor)
+                    
+                c.drawString(72, 650, BuenVendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
                 c.drawString(72, 665, BuenCliente)
                 c.setStrokeColor(colors.black)
@@ -814,7 +819,9 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
 
         # Dibujar un borde
                 
-                c.drawString(72, 650, Vendedor)
+                BuenVendedor = ("Vendedor: " + Vendedor)
+                    
+                c.drawString(72, 650, BuenVendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
                 c.drawString(72, 665, BuenCliente)
                 c.setStrokeColor(colors.black)
@@ -937,7 +944,9 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
 
         # Dibujar un borde
                 
-                c.drawString(72, 650, Vendedor)
+                BuenVendedor = ("Vendedor: " + Vendedor)
+                    
+                c.drawString(72, 650, BuenVendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
                 c.drawString(72, 665, BuenCliente)
                 c.setStrokeColor(colors.black)
@@ -1060,7 +1069,9 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
 
         # Dibujar un borde
                 
-                c.drawString(72, 650, Vendedor)
+                BuenVendedor = ("Vendedor: " + Vendedor)
+                    
+                c.drawString(72, 650, BuenVendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
                 c.drawString(72, 665, BuenCliente)
                 c.setStrokeColor(colors.black)
