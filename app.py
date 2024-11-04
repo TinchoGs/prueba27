@@ -456,7 +456,7 @@ if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
             
 
             # Logo de la empresa
-                    c.drawImage(".images/logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
+                    c.drawImage(".images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
                     
             # Título y pretexto
                     
@@ -580,7 +580,7 @@ elif tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Peso':
         
 
         # Logo de la empresa
-                c.drawImage(".images/logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
+                c.drawImage(".images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
                 
         # Título y pretexto
                 
@@ -703,7 +703,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
         
 
         # Logo de la empresa
-                c.drawImage(".images/logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
+                c.drawImage(".images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
                 
         # Título y pretexto
                 
@@ -826,7 +826,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
         
 
         # Logo de la empresa
-                c.drawImage(".images/logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
+                c.drawImage(".images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
                 
         # Título y pretexto
                 
@@ -949,7 +949,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
         
 
         # Logo de la empresa
-                c.drawImage(".images/logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
+                c.drawImage(".images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
                 
         # Título y pretexto
                 
@@ -1072,7 +1072,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
         
 
         # Logo de la empresa
-                c.drawImage(".images/logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
+                c.drawImage(".images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
                 
         # Título y pretexto
                 
