@@ -515,7 +515,7 @@ elif tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Peso':
             for index, row in cotiza_df.iterrows():
         # Asegúrate de que estás accediendo a los valores correctamente
                 data.append([row["Codigo"], row["Articulo"], row["Precio/Pesos"], row["Cantidad"],  row["SubTotal"]])
-            data.append(["", "", "", "Subtotal", round(total, 2)])
+            data.append(["", "", "", "Total", round(total, 2)])
 
                 
 
@@ -641,7 +641,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
             for index, row in cotiza_df.iterrows():
         # Asegúrate de que estás accediendo a los valores correctamente
                 data.append([row["Codigo"], row["Articulo"], row["PrecioKg/USD"], row["Kg_vender"],  row["SubTotal"]])
-            data.append(["", "", "", "Subtotal", round(total, 2)])
+            data.append(["", "", "", "Total", round(total, 2)])
 
                 
 
@@ -767,7 +767,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
             for index, row in cotiza_df.iterrows():
         # Asegúrate de que estás accediendo a los valores correctamente
                 data.append([row["Codigo"], row["Articulo"], row["PrecioKg/Pesos"], row["Kg_vender"],  row["SubTotal"]])
-            data.append(["", "", "", "Subtotal", round(total, 2)])
+            data.append(["", "", "", "Total", round(total, 2)])
 
                 
 
@@ -893,7 +893,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
             for index, row in cotiza_df.iterrows():
         # Asegúrate de que estás accediendo a los valores correctamente
                 data.append([row["Codigo"], row["Articulo"], row["Precio/USD"], row["Metros_vender"],  row["SubTotal"]])
-            data.append(["", "", "", "Subtotal", round(total, 2)])
+            data.append(["", "", "", "Total", round(total, 2)])
 
                 
 
@@ -1019,7 +1019,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
             for index, row in cotiza_df.iterrows():
         # Asegúrate de que estás accediendo a los valores correctamente
                 data.append([row["Codigo"], row["Articulo"], row["Precio/Pesos"], row["Metros_vender"],  row["SubTotal"]])
-            data.append(["", "", "", "Subtotal", round(total, 2)])
+            data.append(["", "", "", "Total", round(total, 2)])
 
                 
 
@@ -1079,7 +1079,6 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
                 c.drawString(72, 650, BuenVendedor)
                 BuenCliente = ("Cliente: " + cliente_data)
                 c.drawString(72, 665, BuenCliente)
-                c.setStrokeColor(colors.black)
                 c.rect(0.5 * inch, 0.5 * inch, width - 1 * inch, height - 1 * inch)
 
                     
