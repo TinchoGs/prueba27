@@ -367,12 +367,11 @@ if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
                     st.warning('Llene los campos de cantidad.')
                 else:
                     cotiza_df = (carrito_lindo.data[["Codigo", "Articulo", "Precio/USD", "Cantidad"]])
-                    cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/USD"]) * float(row["Cantidad"]), 2), axis=1)
+                    cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/USD"]) * float(row["Cantidad"]), 3), axis=1)
                     st.write(cotiza_df)
                     total = (cotiza_df['SubTotal']).sum()
-                    st.write(f"Total Cotizacion: ${total:.2f}" + dolar_hoy)
-
-
+                    st.write("Total Cotizacion: $"+ str(round(total, 2)))
+                  
 
                     #pdf
                     pagesize = letter
@@ -495,10 +494,12 @@ elif tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Peso':
                 st.warning('Llene los campos de cantidad.')
             else:
                 cotiza_df = (carrito_lindo.data[["Codigo", "Articulo", "Precio/Pesos", "Cantidad"]])
-                cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/Pesos"]) * float(row["Cantidad"]), 2), axis=1)
+                cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/Pesos"]) * float(row["Cantidad"]), 3), axis=1)
                 st.write(cotiza_df)
                 total = (cotiza_df['SubTotal']).sum()
-                st.write(f"Total cotizacion: ${total:.2f}" + dolar_hoy)
+               
+                st.write("Total Cotizacion: $"+ str(round(total, 2)))
+                st.write("Valor del dolar hoy: " + str(round(dolar_hoy, 2)))
 
 
 
@@ -624,10 +625,11 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
                 st.warning('Llene los campos de Kg_vender.')
             else:
                 cotiza_df = (carrito_lindo.data[["Codigo", "Articulo", "PrecioKg/USD", "Kg_vender"]])
-                cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["PrecioKg/USD"]) * float(row["Kg_vender"]), 2), axis=1)
+                cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["PrecioKg/USD"]) * float(row["Kg_vender"]), 3), axis=1)
                 st.write(cotiza_df)
                 total = (cotiza_df['SubTotal']).sum()
-                st.write(f"Total cotizacion: ${total:.2f}")
+                st.write("Total Cotizacion: $"+ str(round(total, 2)))
+                    
 
 
 
@@ -756,10 +758,11 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
                 st.warning('Llene los campos de Kg_vender.')
             else:
                 cotiza_df = (carrito_lindo.data[["Codigo", "Articulo", "PrecioKg/Pesos", "Kg_vender"]])
-                cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["PrecioKg/Pesos"]) * float(row["Kg_vender"]), 2), axis=1)
+                cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["PrecioKg/Pesos"]) * float(row["Kg_vender"]), 3), axis=1)
                 st.write(cotiza_df)
                 total = (cotiza_df['SubTotal']).sum()
-                st.write(f"Total cotizacion: ${total:.2f}"  + dolar_hoy)
+                st.write("Total Cotizacion: $"+ str(round(total, 2)))
+                st.write("Valor del dolar hoy: " + str(round(dolar_hoy, 2)))
 
 
 
@@ -884,10 +887,11 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
                 st.warning('Llene los campos de Metros_vender.')
             else:
                 cotiza_df = (carrito_lindo.data[["Codigo", "Articulo", "Precio/USD", "Metros_vender"]])
-                cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/USD"]) * float(row["Metros_vender"]), 2), axis=1)
+                cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/USD"]) * float(row["Metros_vender"]), 3), axis=1)
                 st.write(cotiza_df)
                 total = (cotiza_df['SubTotal']).sum()
-                st.write(f"Total cotizacion ${total:.2f}")
+                st.write("Total Cotizacion: $"+ str(round(total, 2)))
+                    
 
 
 
@@ -1012,10 +1016,11 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
                 st.warning('Llene los campos de Metros_vender.')
             else:
                 cotiza_df = (carrito_lindo.data[["Codigo", "Articulo", "Precio/Pesos", "Metros_vender"]])
-                cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/Pesos"]) * float(row["Metros_vender"]), 2), axis=1)
+                cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/Pesos"]) * float(row["Metros_vender"]), 3), axis=1)
                 st.write(cotiza_df)
                 total = (cotiza_df['SubTotal']).sum()
-                st.write(f"Total cotizacion: ${total:.2f}" + dolar_hoy)
+                st.write("Total Cotizacion: $"+ str(round(total, 2)))
+                st.write("Valor del dolar hoy: " + str(round(dolar_hoy, 2)))
 
 
 
