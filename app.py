@@ -370,7 +370,8 @@ if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
                     cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/USD"]) * float(row["Cantidad"]), 3), axis=1)
                     st.write(cotiza_df)
                     total = (cotiza_df['SubTotal']).sum()
-                    st.write("Total Cotizacion: $"+ str(round(total, 2)))
+                    pollin = ("Total Cotizacion: $" + str(round(total, 2)))
+                    st.write(pollin)
                   
 
                     #pdf
