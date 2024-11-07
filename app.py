@@ -370,8 +370,7 @@ if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
                     cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/USD"]) * float(row["Cantidad"]), 3), axis=1)
                     st.write(cotiza_df)
                     total = (cotiza_df['SubTotal']).sum()
-                    pollin = ("Total Cotizacion: $" + str(round(total, 2)))
-                    st.write(pollin)
+                    st.write("Total Cotizacion: $" + str(round(total, 2)))
                   
 
                     #pdf
@@ -499,7 +498,7 @@ elif tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Peso':
                 st.write(cotiza_df)
                 total = (cotiza_df['SubTotal']).sum()
                
-                st.write("Total Cotizacion: $"+ str(round(total, 2)))
+                st.write("Total Cotizacion: $" + str(round(total, 2)))
                 st.write("Valor del dolar hoy: " + str(round(dolar_hoy, 2)))
 
 
@@ -629,7 +628,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
                 cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["PrecioKg/USD"]) * float(row["Kg_vender"]), 3), axis=1)
                 st.write(cotiza_df)
                 total = (cotiza_df['SubTotal']).sum()
-                st.write("Total Cotizacion: $"+ str(round(total, 2)))
+                st.write("Total Cotizacion: $" + str(round(total, 2)))
                     
 
 
@@ -762,7 +761,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
                 cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["PrecioKg/Pesos"]) * float(row["Kg_vender"]), 3), axis=1)
                 st.write(cotiza_df)
                 total = (cotiza_df['SubTotal']).sum()
-                st.write("Total Cotizacion: $"+ str(round(total, 2)))
+                st.write("Total Cotizacion: $" + str(round(total, 2)))
                 st.write("Valor del dolar hoy: " + str(round(dolar_hoy, 2)))
 
 
@@ -891,7 +890,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
                 cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/USD"]) * float(row["Metros_vender"]), 3), axis=1)
                 st.write(cotiza_df)
                 total = (cotiza_df['SubTotal']).sum()
-                st.write("Total Cotizacion: $"+ str(round(total, 2)))
+                st.write("Total Cotizacion: $" + str(round(total, 2)))
                     
 
 
@@ -1020,7 +1019,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
                 cotiza_df["SubTotal"] = cotiza_df.apply(lambda row: round(float(row["Precio/Pesos"]) * float(row["Metros_vender"]), 3), axis=1)
                 st.write(cotiza_df)
                 total = (cotiza_df['SubTotal']).sum()
-                st.write("Total Cotizacion: $"+ str(round(total, 2)))
+                st.write("Total Cotizacion: $" + str(round(total, 2)))
                 st.write("Valor del dolar hoy: " + str(round(dolar_hoy, 2)))
 
 
