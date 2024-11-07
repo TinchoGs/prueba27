@@ -1028,7 +1028,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
                 pagesize = letter
                 leftMargin = 18  # 1 pulgada   
                 rightMargin = 18  # 1 pulgada
-                topMargin = 180 # 1 pulgada
+                topMargin = 230 # 1 pulgada
                 bottomMargin = 0  # 1 pulgada           
                 
             data = [
