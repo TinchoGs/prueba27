@@ -32,7 +32,7 @@ df_clientes = conn.read(worksheet='Clientes')
 df_dolar = conn.read(worksheet='DolarBNA_hoy',header=None)
 dolar_hoy= df_dolar.iloc[0, 1]
 fecha = df_dolar.iloc[0, 0].replace("/", "_")
-
+fecha2 = df_dolar.iloc[0, 0]
 # Caja de búsqueda
 nombres_clientes = df_clientes['Cliente'].dropna().unique().tolist()
 
@@ -262,11 +262,28 @@ def agregar_al_carrito(nuevos_articulos):
 
 # Almacena los artículos seleccionados
 articulo_seleccionado_df = pd.DataFrame(grid_table['selected_rows'])
-if st.button("Añadir al carrito"):
-    # Verificar si se han seleccionado nuevos artículos antes de agregar al carrito
-    if not articulo_seleccionado_df.empty:
-        agregar_al_carrito(articulo_seleccionado_df)
 
+
+# Definir las columnas
+col1, col2, col3 = st.columns([1, 1, 1])  # Col1 ocupa 1 parte, Col2 ocupa 2 partes, Col3 ocupa 1 parte
+
+with col1:
+    if st.button("Añadir al carrito"):
+        # Verificar si se han seleccionado nuevos artículos antes de agregar al carrito
+        if not articulo_seleccionado_df.empty:
+            agregar_al_carrito(articulo_seleccionado_df)
+
+with col2:
+    # Mejorar la escritura en la columna 2
+    st.write("**Cotización del Dólar U.S.A (Tipo de venta BNA):**")
+    st.write(f"**Fecha:** {fecha2}")
+    st.write(f"**Dólar hoy:** ${dolar_hoy:.2f}")
+
+with col3:
+    st.write("")  # Puedes dejar esta columna vacía o agregar contenido adicional si lo deseas
+
+# Selector de múltiples opciones
+   
 
 # Mantener el contenido del carrito incluso cuando se cambian los filtros o se resetean
 if not st.session_state.carrito.empty:
@@ -648,13 +665,13 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
                 bottomMargin = 0            
                     
                 data = [
-                    ['Codigo', 'Articulo', 'Precio/USD', 'Cantidad', 'SubTotal']
+                    ['Codigo', 'Articulo', 'PrecioKg/USD', 'Kg_Vender', 'SubTotal']
                     ]
 
         
                 for index, row in cotiza_df.iterrows():
             # Asegúrate de que estás accediendo a los valores correctamente
-                    data.append([row["Codigo"], row["Articulo"], row["Precio/USD"], row["Cantidad"],  row["SubTotal"]])
+                    data.append([row["Codigo"], row["Articulo"], row["PrecioKG/USD"], row["Kg_Vender"],  row["SubTotal"]])
                 data.append(["", "", "", "Total", round(total, 2)])
 
                     
@@ -776,13 +793,13 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
                 bottomMargin = 0            
                     
                 data = [
-                    ['Codigo', 'Articulo', 'Precio/Pesos', 'Cantidad', 'SubTotal']
+                    ['Codigo', 'Articulo', 'PrecioKg/Pesos', 'Kg_vender', 'SubTotal']
                     ]
 
         
                 for index, row in cotiza_df.iterrows():
             # Asegúrate de que estás accediendo a los valores correctamente
-                    data.append([row["Codigo"], row["Articulo"], row["Precio/Pesos"], row["Cantidad"],  row["SubTotal"]])
+                    data.append([row["Codigo"], row["Articulo"], row["PrecioKg/Pesos"], row["Kg_Vender"],  row["SubTotal"]])
                 data.append(["", "", "", "Total", round(total, 2)])
 
                     
@@ -899,13 +916,13 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
                 bottomMargin = 0            
                     
                 data = [
-                    ['Codigo', 'Articulo', 'Precio/USD', 'Cantidad', 'SubTotal']
+                    ['Codigo', 'Articulo', 'Precio/USD', 'Metros_Vender', 'SubTotal']
                     ]
 
         
                 for index, row in cotiza_df.iterrows():
             # Asegúrate de que estás accediendo a los valores correctamente
-                    data.append([row["Codigo"], row["Articulo"], row["Precio/USD"], row["Cantidad"],  row["SubTotal"]])
+                    data.append([row["Codigo"], row["Articulo"], row["Precio/USD"], row["Metros_vender"],  row["SubTotal"]])
                 data.append(["", "", "", "Total", round(total, 2)])
 
                     
@@ -1026,13 +1043,13 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
                 bottomMargin = 0            
                     
                 data = [
-                    ['Codigo', 'Articulo', 'Precio/Pesos', 'Cantidad', 'SubTotal']
+                    ['Codigo', 'Articulo', 'Precio/Pesos', 'Metros_vender', 'SubTotal']
                     ]
 
         
                 for index, row in cotiza_df.iterrows():
             # Asegúrate de que estás accediendo a los valores correctamente
-                    data.append([row["Codigo"], row["Articulo"], row["Precio/Pesos"], row["Cantidad"],  row["SubTotal"]])
+                    data.append([row["Codigo"], row["Articulo"], row["Precio/Pesos"], row["Metros_vender"],  row["SubTotal"]])
                 data.append(["", "", "", "Total", round(total, 2)])
 
                     
@@ -1134,3 +1151,14 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
 
 else:
     st.write("No hay artículos en el carrito.")
+
+
+# Footer en Markdown
+st.markdown("---")
+st.markdown("### Contacto")
+
+st.markdown("- **Emails:** [jonasjonifernandez2@gmail.com)")
+st.markdown("- **Emails:** [iansistemas990@gmail.com")
+st.markdown("- **Emails:** [martinmansilla615@gmail.com")
+st.markdown("- **Emails:** [thiagodanilocontacto@gmail.com")
+st.markdown("---")
