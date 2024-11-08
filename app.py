@@ -665,13 +665,13 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
                 bottomMargin = 0            
                     
                 data = [
-                    ['Codigo', 'Articulo', 'PrecioKg/USD', 'Kg_Vender', 'SubTotal']
+                    ['Codigo', 'Articulo', 'PrecioKg/USD', 'Kg_vender', 'SubTotal']
                     ]
 
         
                 for index, row in cotiza_df.iterrows():
             # Asegúrate de que estás accediendo a los valores correctamente
-                    data.append([row["Codigo"], row["Articulo"], row["PrecioKG/USD"], row["Kg_Vender"],  row["SubTotal"]])
+                    data.append([row["Codigo"], row["Articulo"], row["PrecioKg/USD"], row["Kg_vender"],  row["SubTotal"]])
                 data.append(["", "", "", "Total", round(total, 2)])
 
                     
