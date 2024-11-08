@@ -21,7 +21,7 @@ session_state = st.session_state
 
 col1,col2=st.columns([1,2.5])
 with col1:
-    st.image(".images\logos2.webp", width=400)
+    st.image("logos2.webp", width=400)
 with col2:
     st.title("Listado de articulos")
 
