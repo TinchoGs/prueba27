@@ -21,7 +21,7 @@ session_state = st.session_state
 
 col1,col2=st.columns([1,2.5])
 with col1:
-    st.image("logos2.webp", width=400)
+    st.image("images/logos2.webp", width=400)
 with col2:
     st.title("Listado de articulos")
 
@@ -442,7 +442,7 @@ if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
                     
                 
                     width, height = letter
-                    c.drawImage(".images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
+                    c.drawImage("images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
 
                     #Esta variable otorga el nombre del cliente que elegis al cotizar
                     BuenCliente = ("Cliente: " + cliente_data)
@@ -574,7 +574,7 @@ elif tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Peso':
                     
                 
                     width, height = letter
-                    c.drawImage(".images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
+                    c.drawImage("images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
 
                     #Esta variable otorga el nombre del cliente que elegis al cotizar
                     BuenCliente = ("Cliente: " + cliente_data)
@@ -705,7 +705,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
                     
                 
                     width, height = letter
-                    c.drawImage(".images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
+                    c.drawImage("images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
 
                     #Esta variable otorga el nombre del cliente que elegis al cotizar
                     BuenCliente = ("Cliente: " + cliente_data)
@@ -833,7 +833,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
                     
                 
                     width, height = letter
-                    c.drawImage(".images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
+                    c.drawImage("images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
 
                     #Esta variable otorga el nombre del cliente que elegis al cotizar
                     BuenCliente = ("Cliente: " + cliente_data)
@@ -956,7 +956,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
                     
                 
                     width, height = letter
-                    c.drawImage(".images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
+                    c.drawImage("images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
 
                     #Esta variable otorga el nombre del cliente que elegis al cotizar
                     BuenCliente = ("Cliente: " + cliente_data)
@@ -1083,7 +1083,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
                     
                 
                     width, height = letter
-                    c.drawImage(".images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
+                    c.drawImage("images/Logo.png", 1 * inch, height - 1.5 * inch, width=1 * inch, height=0.9 * inch)
 
                     #Esta variable otorga el nombre del cliente que elegis al cotizar
                     BuenCliente = ("Cliente: " + cliente_data)
