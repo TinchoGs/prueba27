@@ -19,7 +19,11 @@ st.set_page_config(layout="wide")
 # Creamos un objeto de sesión
 session_state = st.session_state
 
-st.title("Productos Almar")
+col1,col2=st.columns([1,2.5])
+with col1:
+    st.image(".images\logos2.webp", width=400)
+with col2:
+    st.title("Listado de articulos")
 
 # Lee el archivo CSV
 conn = st.connection("gsheets", type=GSheetsConnection)
@@ -513,13 +517,13 @@ elif tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Peso':
                 bottomMargin = 0            
                     
                 data = [
-                    ['Codigo', 'Articulo', 'Precio/USD', 'Cantidad', 'SubTotal']
+                    ['Codigo', 'Articulo', 'Precio/Pesos', 'Cantidad', 'SubTotal']
                     ]
 
         
                 for index, row in cotiza_df.iterrows():
             # Asegúrate de que estás accediendo a los valores correctamente
-                    data.append([row["Codigo"], row["Articulo"], row["Precio/USD"], row["Cantidad"],  row["SubTotal"]])
+                    data.append([row["Codigo"], row["Articulo"], row["Precio/Pesos"], row["Cantidad"],  row["SubTotal"]])
                 data.append(["", "", "", "Total", round(total, 2)])
 
                     
@@ -772,13 +776,13 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
                 bottomMargin = 0            
                     
                 data = [
-                    ['Codigo', 'Articulo', 'Precio/USD', 'Cantidad', 'SubTotal']
+                    ['Codigo', 'Articulo', 'Precio/Pesos', 'Cantidad', 'SubTotal']
                     ]
 
         
                 for index, row in cotiza_df.iterrows():
             # Asegúrate de que estás accediendo a los valores correctamente
-                    data.append([row["Codigo"], row["Articulo"], row["Precio/USD"], row["Cantidad"],  row["SubTotal"]])
+                    data.append([row["Codigo"], row["Articulo"], row["Precio/Pesos"], row["Cantidad"],  row["SubTotal"]])
                 data.append(["", "", "", "Total", round(total, 2)])
 
                     
@@ -1022,13 +1026,13 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
                 bottomMargin = 0            
                     
                 data = [
-                    ['Codigo', 'Articulo', 'Precio/USD', 'Cantidad', 'SubTotal']
+                    ['Codigo', 'Articulo', 'Precio/Pesos', 'Cantidad', 'SubTotal']
                     ]
 
         
                 for index, row in cotiza_df.iterrows():
             # Asegúrate de que estás accediendo a los valores correctamente
-                    data.append([row["Codigo"], row["Articulo"], row["Precio/USD"], row["Cantidad"],  row["SubTotal"]])
+                    data.append([row["Codigo"], row["Articulo"], row["Precio/Pesos"], row["Cantidad"],  row["SubTotal"]])
                 data.append(["", "", "", "Total", round(total, 2)])
 
                     
