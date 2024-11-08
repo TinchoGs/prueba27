@@ -466,7 +466,7 @@ if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
                     c.drawString(2.1 * inch, height - 1.23 * inch, "Cotizacion")
                     
                     tablo.wrapOn(c, width, height)
-                    tablo.drawOn(c, 1 * inch, height - 3.7   * inch)
+                    tablo.drawOn(c, 72, 450)
 
 
 
@@ -598,8 +598,7 @@ elif tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Peso':
                 c.drawString(2.1 * inch, height - 1.23 * inch, "Cotizacion")
                 
                 tablo.wrapOn(c, width, height)
-                tablo.drawOn(c, 1 * inch, height - 3.7   * inch)
-
+                tablo.drawOn(c, 72, 450)
 
 
             elementos=[parrafo_personalizado]
@@ -731,7 +730,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Dolar':
                 c.drawString(2.1 * inch, height - 1.23 * inch, "Cotizacion")
                 
                 tablo.wrapOn(c, width, height)
-                tablo.drawOn(c, 1 * inch, height - 3.7   * inch)
+                tablo.drawOn(c, 72, 450)
 
 
 
@@ -860,7 +859,7 @@ elif tipo_venta == 'Venta por peso' and tipo_moneda == 'Peso':
                 c.drawString(2.1 * inch, height - 1.23 * inch, "Cotizacion")
                 
                 tablo.wrapOn(c, width, height)
-                tablo.drawOn(c, 1 * inch, height - 3.7   * inch)
+                tablo.drawOn(c, 72, 450)
 
 
 
@@ -989,7 +988,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Dolar':
                 c.drawString(2.1 * inch, height - 1.23 * inch, "Cotizacion")
                 
                 tablo.wrapOn(c, width, height)
-                tablo.drawOn(c, 1 * inch, height - 3.7   * inch)
+                tablo.drawOn(c, 72, 450)
 
 
 
@@ -1059,7 +1058,8 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
                     ('GRID', (0, 0), (-1, -1), 1, colors.black),
                     ])
             tablo.setStyle(style)
-            
+            #pagesize=pagesize, leftMargin=leftMargin, rightMargin=rightMargin,
+                                    #topMargin=topMargin, bottomMargin=bottomMargin
 
 
 
@@ -1071,8 +1071,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
 
             pdf_buffer = BytesIO()
 
-            doc = SimpleDocTemplate(pdf_buffer, pagesize=pagesize, leftMargin=leftMargin, rightMargin=rightMargin,
-                                    topMargin=topMargin, bottomMargin=bottomMargin)
+            doc = SimpleDocTemplate(pdf_buffer)
 
     # Crea un estilo de texto
             mi_estilo = ParagraphStyle(
@@ -1117,7 +1116,7 @@ elif tipo_venta == 'Venta por metro' and tipo_moneda == 'Peso':
                 c.drawString(2.1 * inch, height - 1.23 * inch, "Cotizacion")
                 
                 tablo.wrapOn(c, width, height)
-                tablo.drawOn(c, 1 * inch, height - 3.7   * inch)
+                tablo.drawOn(c, 72, 450)
 
 
 
