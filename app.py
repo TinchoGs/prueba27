@@ -360,7 +360,7 @@ if not session_state.carrito.empty:
             st.warning("Por favor, selecciona al menos un artículo para eliminar.")
 
 ValidezCot = ['7 dias', '15 dias', '30 dias']
-tiempo_cotizacion = st.selectbox("seleccione validez de presupuesto de venta", ValidezCot)
+tiempo_cotizacion = st.selectbox("Seleccione validez de presupuesto de venta", ValidezCot)
         # Cálculo del Total a cotizacion
 if tipo_venta == 'Venta por unidad' and  tipo_moneda == 'Dolar' :
     
